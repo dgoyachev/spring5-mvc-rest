@@ -1,7 +1,9 @@
 package com.calltouch.spring5mvcrest.bootstrap;
 
 import com.calltouch.spring5mvcrest.domain.Category;
+import com.calltouch.spring5mvcrest.domain.Customer;
 import com.calltouch.spring5mvcrest.repositories.CategoryRepository;
+import com.calltouch.spring5mvcrest.repositories.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,14 +14,29 @@ import org.springframework.stereotype.Component;
 @Component
 public class Bootstrap implements CommandLineRunner {
 
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
+    private final CustomerRepository customerRepository;
 
-    public Bootstrap(CategoryRepository categoryRepository) {
+    public Bootstrap(CategoryRepository categoryRepository, CustomerRepository customerRepository) {
         this.categoryRepository = categoryRepository;
+        this.customerRepository = customerRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        loadCategories();
+        loadCustomers();
+    }
+
+    private void loadCustomers() {
+        //given
+        customerRepository.save(new Customer(1L, "Michale", "Weston"));
+        customerRepository.save(new Customer(2L, "Sam", "Axe"));
+
+        System.out.println("Customers Loaded: " + customerRepository.count());
+    }
+
+    private void loadCategories() {
         Category fruits = new Category();
         fruits.setName("Fruits");
 
