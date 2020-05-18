@@ -63,7 +63,7 @@ public class VendorServiceImpl implements VendorService {
     private VendorDTO saveAndReturnDTO(Vendor vendor) {
         Vendor savedVendor = vendorRepository.save(vendor);
         VendorDTO vendorDTO = vendorMapper.vendorToVendorDTO(savedVendor);
-        vendorDTO.setVendorUrl(VendorController.BASE_URL + savedVendor.getId());
+        vendorDTO.setVendorUrl(VendorController.BASE_URL + "/" + savedVendor.getId());
         return vendorDTO;
     }
 
