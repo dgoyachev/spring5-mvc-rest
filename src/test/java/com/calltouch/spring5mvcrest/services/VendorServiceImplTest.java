@@ -62,7 +62,7 @@ class VendorServiceImplTest {
 
     @Test
     void createNewVendor() {
-        VendorDTO vendorDTO = new VendorDTO("Vendor 1" , "/api/v1/vendor/1");
+        VendorDTO vendorDTO = new VendorDTO("Vendor 1" , "/api/v1/vendors/1");
 
         Vendor savedVendor = new Vendor(1L, "Vendor 1");
 
@@ -71,12 +71,12 @@ class VendorServiceImplTest {
         VendorDTO savedVendorDTO = vendorService.createNewVendor(vendorDTO);
 
         assertEquals(vendorDTO.getName(), savedVendorDTO.getName());
-        assertEquals("/api/v1/vendor/1", savedVendorDTO.getVendorUrl());
+        assertEquals("/api/v1/vendors/1", savedVendorDTO.getVendorUrl());
     }
 
     @Test
     void saveVendorByDTO() {
-        VendorDTO vendorDTO = new VendorDTO("Vendor 1" , "/api/v1/vendor/1");
+        VendorDTO vendorDTO = new VendorDTO("Vendor 1" , "/api/v1/vendors/1");
 
         Vendor savedVendor = new Vendor(1L, "Vendor 1");
 
@@ -85,7 +85,7 @@ class VendorServiceImplTest {
         VendorDTO savedVendorDTO = vendorService.saveVendorByDTO(1L, vendorDTO);
 
         assertEquals(vendorDTO.getName(), savedVendorDTO.getName());
-        assertEquals("/api/v1/vendor/1", savedVendorDTO.getVendorUrl());
+        assertEquals("/api/v1/vendors/1", savedVendorDTO.getVendorUrl());
     }
 
     @Test
